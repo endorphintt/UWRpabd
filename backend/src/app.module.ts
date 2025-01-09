@@ -8,7 +8,16 @@ import { User } from './users/users.model'
 import { RolesModule } from './roles/roles.module'
 import { Role } from './roles/roles.model'
 import { UserRoles } from './roles/user-roles.model'
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth/auth.module'
+import { ProductsModule } from './products/products.module'
+import { OrdersModule } from './orders/orders.module'
+import { BasketsModule } from './baskets/baskets.module'
+import { Basket } from './baskets/baskets.model'
+import { Product } from './products/products.model'
+import { ProductImage } from './products/product_image.model'
+import { BasketProduct } from './baskets/baskets_product.model'
+import { OrderProducts } from './orders/order_products.model'
+import { Order } from './orders/orders.model'
 
 @Module({
     controllers: [AppController],
@@ -24,12 +33,25 @@ import { AuthModule } from './auth/auth.module';
             username: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
-            models: [User, Role, UserRoles],
+            models: [
+                User,
+                Role,
+                UserRoles,
+                Basket,
+                Product,
+                ProductImage,
+                BasketProduct,
+                Order,
+                OrderProducts,
+            ],
             autoLoadModels: true,
         }),
         UsersModule,
         RolesModule,
         AuthModule,
+        ProductsModule,
+        OrdersModule,
+        BasketsModule,
     ],
 })
 export class AppModule {}

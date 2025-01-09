@@ -4,12 +4,14 @@ import { InjectModel } from '@nestjs/sequelize'
 import { CreateUserDto } from './dto/create-user.dto'
 import { RolesService } from 'src/roles/roles.service'
 import { BanUserDto } from './dto/ban.dto'
+import { BasketsService } from 'src/baskets/baskets.service'
 
 @Injectable()
 export class UsersService {
     constructor(
         @InjectModel(User) private userRepository: typeof User,
-        private rolesService: RolesService
+        private rolesService: RolesService,
+        private basketRepository: BasketsService
     ) {}
 
     async createUser(dto: CreateUserDto) {
@@ -17,6 +19,8 @@ export class UsersService {
         const role = await this.rolesService.getRoleByValue('user')
         await user.$set('roles', [role.id])
         user.roles = [role]
+        const basket = await this.basketRepository.create({ userId: user.id })
+        user.basket = basket
         return user
     }
 
