@@ -8,6 +8,7 @@ import { Basket } from 'src/baskets/baskets.model'
 import { BasketProduct } from 'src/baskets/baskets_product.model'
 import { Order } from 'src/orders/orders.model'
 import { OrderProducts } from 'src/orders/order_products.model'
+import { FilesModule } from 'src/files/files.module'
 
 @Module({
     controllers: [ProductsController],
@@ -18,9 +19,9 @@ import { OrderProducts } from 'src/orders/order_products.model'
             ProductImage,
             Basket,
             BasketProduct,
-            // Order,
-            // OrderProducts,
         ]),
+        FilesModule,
     ],
+    exports: [ProductsService],
 })
 export class ProductsModule {}

@@ -12,8 +12,15 @@ import { BasketProduct } from 'src/baskets/baskets_product.model'
 import { Order } from 'src/orders/orders.model'
 import { OrderProducts } from 'src/orders/order_products.model'
 
+interface ProductCreationAttrs {
+    name: string
+    description: string
+    price: number
+    images: string[]
+}
+
 @Table({ tableName: 'products' })
-export class Product extends Model<Product> {
+export class Product extends Model<Product, ProductCreationAttrs> {
     @Column({
         primaryKey: true,
         autoIncrement: true,

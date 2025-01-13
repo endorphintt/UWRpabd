@@ -18,11 +18,17 @@ import { ProductImage } from './products/product_image.model'
 import { BasketProduct } from './baskets/baskets_product.model'
 import { OrderProducts } from './orders/order_products.model'
 import { Order } from './orders/orders.model'
+import { FilesModule } from './files/files.module'
+import * as path from 'path'
+import { ServeStaticModule } from '@nestjs/serve-static'
 
 @Module({
     controllers: [AppController],
     providers: [AppService],
     imports: [
+        ServeStaticModule.forRoot({
+            rootPath: path.resolve(__dirname, 'static'),
+        }),
         ConfigModule.forRoot({
             envFilePath: '.env',
         }),
@@ -52,6 +58,7 @@ import { Order } from './orders/orders.model'
         ProductsModule,
         OrdersModule,
         BasketsModule,
+        FilesModule,
     ],
 })
 export class AppModule {}
