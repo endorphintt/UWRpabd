@@ -32,8 +32,15 @@ export class UsersController {
 
     // @Roles('admin')
     @UseGuards(RolesGuard)
-    @Post()
+    @Post('ban')
     ban(@Body() dto: BanUserDto) {
         return this.usersService.ban(dto)
+    }
+
+    // Роут для розбану
+    @UseGuards(RolesGuard)
+    @Post('unban')
+    unban(@Body() dto: BanUserDto) {
+        return this.usersService.unban(dto)
     }
 }

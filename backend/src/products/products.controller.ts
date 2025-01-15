@@ -4,6 +4,7 @@ import {
     Get,
     Param,
     Post,
+    Query,
     UploadedFiles,
     UseInterceptors,
 } from '@nestjs/common'
@@ -27,8 +28,20 @@ export class ProductsController {
     }
 
     @Get()
-    async getAll(): Promise<any> {
-        return this.productsService.getAllProducts()
+    async getAll(
+        @Query('sort') sort: string = 'name',
+        @Query('order') order: string = 'ASC',
+        @Query('minPrice') minPrice: number,
+        @Query('maxPrice') maxPrice: number,
+        @Query('name') name: string
+    ): Promise<any> {
+        return this.productsService.getAllProducts(
+            sort,
+            order,
+            minPrice,
+            maxPrice,
+            name
+        )
     }
 
     @Get(':id')

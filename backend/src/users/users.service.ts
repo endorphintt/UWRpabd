@@ -49,4 +49,16 @@ export class UsersService {
         await user.save()
         return user
     }
+
+    // Метод для розбану користувача
+    async unban(dto: BanUserDto) {
+        const user = await this.userRepository.findByPk(dto.userId)
+        if (!user) {
+            throw new HttpException('user is not found', HttpStatus.NOT_FOUND)
+        }
+        user.banned = false
+        user.banReason = null
+        await user.save()
+        return user
+    }
 }

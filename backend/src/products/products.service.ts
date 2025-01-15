@@ -7,6 +7,7 @@ import { FilesService } from 'src/files/files.service'
 import { DeleteProductDto } from './dto/delete-product.dto'
 import * as fs from 'fs'
 import * as path from 'path'
+import { Op } from 'sequelize'
 
 @Injectable()
 export class ProductsService {
@@ -32,9 +33,24 @@ export class ProductsService {
         return this.getProductById(product.id)
     }
 
-    async getAllProducts(): Promise<any> {
+    async getAllProducts(
+        sort: string = 'name',
+        order: string = 'ASC',
+        minPrice?: number,
+        maxPrice?: number,
+        name?: string
+    ): Promise<any> {
+        const where: any = {}
+
+        if (minPrice) where.price = { [Op.gte]: minPrice }
+        if (maxPrice) where.price = { ...where.price, [Op.lte]: maxPrice }
+
+        if (name) where.name = { [Op.iLike]: `%${name}%` }
+
         const products = await this.productRepository.findAll({
+            where,
             include: [ProductImage],
+            order: [[sort, order]],
         })
 
         return products.map((product) => ({

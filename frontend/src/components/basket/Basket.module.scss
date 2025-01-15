@@ -1,0 +1,105 @@
+.basket {
+    background-color: white;
+    width: 100px;
+    position: absolute;
+    width: 700px;
+    top: 200px;
+    left: calc(50% - 350px);
+    box-shadow: 0 0 5px 5px green;
+    &__header {
+        padding: 10px 20px 10px 20px;
+        width: 100%;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        top: 0;
+        left: 0;
+    }
+    &__cancel {
+        height: 18px;
+        width: 20px;
+        position: relative;
+        background-color: transparent;
+        &::before,
+        &::after {
+            position: absolute;
+            left: 0;
+            height: 2px;
+            width: 30px;
+            content: '';
+            background-color: #205eb5;
+        }
+        &::before {
+            top: 8px;
+            transform: rotate(-45deg);
+        }
+        &::after {
+            bottom: 8px;
+            transform: rotate(45deg);
+        }
+    }
+    &__items {
+        padding: 5px;
+    }
+    &__item {
+        margin: 10px 0;
+        border-radius: 20px;
+        height: 40px;
+        box-shadow: 0 0 1px 1px green;
+        padding: 3px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__name {
+        width: 200px;
+    }
+    &__remove,
+    &__decrease,
+    &__increase {
+        background-color: green;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-left: 3px;
+        color: white;
+        font-size: 30px;
+        line-height: 30px;
+    }
+    &__img {
+        margin-top: 5px;
+    }
+}
+
+.order {
+    &__button {
+        width: 200px;
+        height: 40px;
+        color: white;
+        background-color: green;
+        border-radius: 20px;
+        margin: 20px;
+    }
+}
+
+.form {
+    padding: 10px;
+    &__item {
+        display: flex;
+        flex-direction: column;
+        & input {
+            margin: 5px 0;
+            width: 300px;
+            height: 50px;
+            border: 1px solid green;
+        }
+    }
+    &__button {
+        width: 200px;
+        height: 40px;
+        color: white;
+        background-color: green;
+        border-radius: 20px;
+        margin: 20px;
+    }
+}

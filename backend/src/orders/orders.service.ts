@@ -75,14 +75,21 @@ export class OrdersService {
     }
 
     async getAllOrders(): Promise<Order[]> {
-        return this.orderRepository.findAll({
-            include: {
-                model: Product,
-                through: {
-                    attributes: ['quantity', 'price_at_order'],
+        try {
+            const orders = await this.orderRepository.findAll({
+                include: {
+                    model: Product,
+                    through: {
+                        attributes: ['quantity', 'price_at_order'],
+                    },
                 },
-            },
-        })
+            })
+            console.log('Orders:', orders) // Логуємо отримані замовлення
+            return orders
+        } catch (error) {
+            console.error('Error fetching orders:', error)
+            throw new Error('Error fetching orders')
+        }
     }
 
     async getOrderById(orderId: number): Promise<Order> {

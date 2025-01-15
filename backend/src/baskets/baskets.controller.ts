@@ -26,7 +26,7 @@ export class BasketsController {
         return this.basketsService.removeProductFromBasket(removeProductDto)
     }
 
-    @Get('products')
+    @Post('products')
     async getProducts(@Body() getProductsDto: GetProductsDto) {
         return this.basketsService.getProductsInBasket(getProductsDto)
     }

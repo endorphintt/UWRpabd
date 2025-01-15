@@ -61,7 +61,7 @@ export class BasketsService {
         return { message: 'Product removed from basket successfully' }
     }
 
-    async getProductsInBasket(dto: GetProductsDto): Promise<Product[]> {
+    async getProductsInBasket(dto: GetProductsDto): Promise<BasketProduct[]> {
         const basket = await this.basketRepository.findOne({
             where: { userId: dto.userId },
             include: {
@@ -76,7 +76,11 @@ export class BasketsService {
             throw new Error('Basket not found for this user')
         }
 
-        return basket.products
+        const basketProducts = await this.basketProductRepository.findAll({
+            where: { basketId: basket.id },
+        })
+
+        return basketProducts
     }
 
     async increaseProductQuantity(

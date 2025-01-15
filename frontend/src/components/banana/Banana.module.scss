@@ -1,0 +1,66 @@
+.banana {
+    padding: 5px;
+    padding-top: 100px;
+    margin: 0 auto;
+    max-width: 1100px;
+    &__top {
+        display: flex;
+        justify-content: space-around;
+    }
+    &__img {
+        width: 500px;
+        height: 300px;
+        background: url('./banana.png') center center/ cover no-repeat;
+    }
+    &__right {
+        max-width: 500px;
+    }
+    .banana__title {
+        font-size: 49px;
+        font-weight: 600;
+    }
+    .banana__subtitle {
+        margin: 30px 0;
+        color: gray;
+        line-height: 20px;
+    }
+    &__points {
+        display: flex;
+        justify-content: space-around;
+        width: 500px;
+        flex-wrap: wrap;
+    }
+    &__point {
+        width: 45%;
+        margin: 2.5%;
+        display: flex;
+        align-items: center;
+        height: 100px;
+    }
+    &__num {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 30px;
+        color: green;
+        box-shadow: 0 0 3px 3px rgba(128, 128, 128, 0.636);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+    }
+    &__pluses {
+        width: 150px;
+        padding: 5px;
+    }
+    &__pluses_top {
+        border-bottom: 2px solid green;
+        color: green;
+        font-size: 30px;
+        width: 120px;
+    }
+    &__pluses_bottom {
+        padding: 5px;
+        color: gray;
+    }
+}

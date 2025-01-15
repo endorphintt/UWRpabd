@@ -1,0 +1,43 @@
+/* Panel.module.scss */
+.panel {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px;
+    gap: 20px;
+    align-items: center;
+}
+
+.header button {
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.header button:hover {
+    background-color: #45a049;
+}
+
+.header button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(0, 255, 0, 0.5);
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f4f4f9;
+}
